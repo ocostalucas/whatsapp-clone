@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp_clone/app/screens/chat_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -54,7 +55,7 @@ class HomeScreen extends StatelessWidget {
                 ])),
         body: TabBarView(
           children: <Widget>[
-            Text('Page Conversas'),
+            ChatScreen(),
             Text('Page Status'),
             Text('Page Chamada')
           ],
