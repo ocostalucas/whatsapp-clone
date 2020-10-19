@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
+  final void Function() showSearchAppbar;
+
+  final TabController controller;
+
+  const CustomAppBar({Key key, this.controller, this.showSearchAppbar})
+      : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return AppBar(
         title: Text('WhatsApp'),
         actions: [
-          IconButton(icon: Icon(Icons.search), onPressed: () {}),
+          IconButton(icon: Icon(Icons.search), onPressed: showSearchAppbar),
           PopupMenuButton(onSelected: (value) {
             print(value);
           }, itemBuilder: (_) {
@@ -35,6 +42,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           })
         ],
         bottom: TabBar(
+            controller: controller,
             indicatorColor: Colors.white,
             indicatorWeight: 3,
             tabs: <Widget>[
