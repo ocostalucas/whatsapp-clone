@@ -26,7 +26,7 @@ class ChatWidget extends StatelessWidget {
             style: TextStyle(
                 color: qtdNewMessages > 0
                     ? Theme.of(context).accentColor
-                    : Colors.black),
+                    : Theme.of(context).textTheme.bodyText2.color),
           ),
           SizedBox(
             height: 5,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp_clone/app/controllers/theme_controller.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final void Function() showSearchAppbar;
@@ -15,7 +16,12 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         actions: [
           IconButton(icon: Icon(Icons.search), onPressed: showSearchAppbar),
           PopupMenuButton(onSelected: (value) {
-            print(value);
+            if (value == 6) {
+              ThemeController.themeMode.value =
+                  ThemeController.themeMode.value == ThemeMode.light
+                      ? ThemeMode.dark
+                      : ThemeMode.light;
+            }
           }, itemBuilder: (_) {
             return [
               PopupMenuItem(
@@ -37,6 +43,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               PopupMenuItem(
                 child: Text('Configurações'),
                 value: 5,
+              ),
+              PopupMenuItem(
+                child: Text('Alterar tema'),
+                value: 6,
               ),
             ];
           })
